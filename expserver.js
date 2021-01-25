@@ -6,7 +6,7 @@ const app=express();
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/",function(req,res){
-    res.send("Congratulations! you have created your own server")
+    res.send("Calculate the BMI by going on to the 'get calculator' link")
 })
 
 app.get("/about",function(req,res){
@@ -18,7 +18,7 @@ app.get("/contact",function(req,res){
 })
 
 app.get("/calculator",function(req,res){
-    res.sendFile(__dirname+"/index.html");
+    res.sendFile(__dirname+"/bmi.html");
 })
 
 app.post("/calculator",function(req,res){
@@ -27,8 +27,8 @@ app.post("/calculator",function(req,res){
 
     let n1=Number(req.body.v1);
     let n2=Number(req.body.v2);
-    let sum=Number(n1+n2);
-    res.send("Sum of the two number is "+sum)
+    let BMI=Number(n1/(n2*n2));
+    res.send("BMI of the person is "+BMI);
 })
  
 app.listen(3000, function (req,res){
